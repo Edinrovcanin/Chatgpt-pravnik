@@ -3,11 +3,16 @@ import axios from 'axios';
 
 const App = () => {
   const [userInput, setUserInput] = useState('');
+  const [selectedOption, setSelectedOption] = useState('Pravna pomoć 1');
   const [chatGptResponse, setChatGptResponse] = useState('');
-  const apiKey = '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';
+  const apiKey = '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';
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
+  };
+
+  const handleOptionChange = (e) => {
+    setSelectedOption(e.target.value);
   };
 
   const handleSendMessage = async () => {
@@ -16,8 +21,8 @@ const App = () => {
         const response = await axios.post(
           'https://api.openai.com/v1/engines/text-davinci-003/completions',
           {
-            prompt: userInput,
-            max_tokens: 1000, // Povećan broj tokena kako bismo dobili duži odgovor max je 2048
+            prompt: `Selected option: ${selectedOption}\nUser input: ${userInput}`,
+            max_tokens: 2000, // Povećan broj tokena kako bismo dobili duži odgovor max je 2048
           },
           {
             headers: {
@@ -32,19 +37,14 @@ const App = () => {
 
         // Provjerite prisutnost ključnih riječi u odgovoru
         const pravneKljucneRijeci = [
-          "zakon", "ustav", "sud", "advokat", "parnica", "Bosna i Hercegovina", "Srbija", "Hrvatska", "Crna Gora",
-          "odluka", "zakljucak", "presuda", "izvjestaj", "parlament", "opcina", "kanton", "republika", "Federacija",
-          "pravni propis", "regulativa", "zakonodavstvo", "propis", "pravni akt", "pravila", "pravna procedura",
-          "sudska odluka", "zakonik", "parnični postupak", "sudska praksa", "advokatura", "parnica", "odluka suda",
-          "sudski postupak", "izvještaj", "zakonodavno tijelo", "ustavni sud", "upravni sud", "pravni savjet",
-          // Dodajte dodatne ključne riječi ako je potrebno
+          // Vaše ključne riječi
         ];
 
         const jeRelevantanOdgovor = pravneKljucneRijeci.some(kljucnaRijec => responseData.includes(kljucnaRijec));
 
         // Ako je odgovor relevantan, postavite ga kao chatGptResponse
         if (jeRelevantanOdgovor) {
-          // Ograničite odgovor na maksimalno 1000 znakova moguce je ovo maki prositi na max 2048
+          // Ograničite odgovor na maksimalno 1000 znakova moguće je ovo povećati na max 2048
           const trimmedResponse = responseData.substring(0, 1000);
           setChatGptResponse(trimmedResponse);
         } else {
@@ -59,17 +59,19 @@ const App = () => {
 
   return (
     <div style={{ background: '#68b6ef', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-      <h2 style={{ color: 'white' }}>Odaberite pravnu pomoć</h2>
-      <select style={{ marginBottom: '10px' }}>
-        <option>Pravna pomoć 1</option>
-        <option>Pravna pomoć 2</option>
-        <option>Pravna pomoć 3</option>
-        {/* Dodati treba pravne pomoci i dodatne opcije */}
+      <h2 style={{ color: 'white', fontSize: '24px', marginBottom: '20px' }}>Odaberite pravnu pomoć</h2>
+      <select style={{ marginBottom: '20px', fontSize: '18px', height: '50px' }} value={selectedOption} onChange={handleOptionChange}>
+        <option value="Pravna pomoć 1">Građanska prava</option>
+        <option value="Pravna pomoć 2">Ljudska prava</option>
+        <option value="Pravna pomoć 3">Politička prava</option>
+        <option value="Pravna pomoć 4">Socijalna prava</option>
+        <option value="Pravna pomoć 5">Ekonomska prava</option>
+        {/* Dodati ostale pravne pomoći i opcije */}
       </select>
 
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <input type="text" value={userInput} onChange={handleInputChange} style={{ padding: '5px', marginBottom: '10px' }} />
-        <button onClick={handleSendMessage} style={{ background: 'red', color: 'white', padding: '10px 20px', border: 'none', borderRadius: '5px' }}>Pošalji</button>
+        <input type="text" value={userInput} onChange={handleInputChange} style={{ padding: '10px', marginBottom: '20px', fontSize: '18px', width: '300px' }} />
+        <button onClick={handleSendMessage} style={{ background: 'red', color: 'white', padding: '15px 30px', border: 'none', borderRadius: '5px', fontSize: '20px', cursor: 'pointer' }}>Pošalji</button>
       </div>
 
       {chatGptResponse && (
