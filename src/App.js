@@ -5,7 +5,7 @@ const App = () => {
   const [userInput, setUserInput] = useState('');
   const [selectedOption, setSelectedOption] = useState('Pravna pomoć 1');
   const [chatGptResponse, setChatGptResponse] = useState('');
-  const apiKey = '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';
+  const apiKey = 'API MAKI OVDE PISIb';
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
@@ -35,22 +35,9 @@ const App = () => {
         // Iz response-a izvucite odgovor od API-ja
         const responseData = response.data.choices[0].text;
 
-        // Provjerite prisutnost ključnih riječi u odgovoru
-        const pravneKljucneRijeci = [
-          // Vaše ključne riječi
-        ];
-
-        const jeRelevantanOdgovor = pravneKljucneRijeci.some(kljucnaRijec => responseData.includes(kljucnaRijec));
-
-        // Ako je odgovor relevantan, postavite ga kao chatGptResponse
-        if (jeRelevantanOdgovor) {
-          // Ograničite odgovor na maksimalno 1000 znakova moguće je ovo povećati na max 2048
-          const trimmedResponse = responseData.substring(0, 1000);
-          setChatGptResponse(trimmedResponse);
-        } else {
-          // Ako odgovor nije relevantan, prikažite poruku korisniku da odgovor nije vezan za pravne teme
-          setChatGptResponse("Odgovor nije vezan za pravne teme.");
-        }
+        // Ograničite odgovor na maksimalno 1000 znakova moguće je ovo povećati na max 2048
+        const trimmedResponse = responseData.substring(0, 1000);
+        setChatGptResponse(trimmedResponse);
       } catch (error) {
         console.error('Greška pri dobivanju odgovora od API-ja:', error);
       }
