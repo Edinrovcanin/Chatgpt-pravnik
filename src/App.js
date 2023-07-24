@@ -14,7 +14,7 @@ const App = () => {
     if (userInput.trim() !== '') {
       try {
         const response = await axios.post(
-          'https://api.openai.com/v1/engines/davinci/completions',
+          'https://api.openai.com/v1/engines/text-davinci-003/completions',
           {
             prompt: userInput,
             max_tokens: 1000, // Povećan broj tokena kako bismo dobili duži odgovor max je 2048
