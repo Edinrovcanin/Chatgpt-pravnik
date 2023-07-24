@@ -6,7 +6,7 @@ const App = () => {
   const [selectedOption, setSelectedOption] = useState('Pravna pomoć 1');
   const [selectedCountry, setSelectedCountry] = useState('Bosna i Hercegovina');
   const [chatGptResponse, setChatGptResponse] = useState('');
-  const apiKey = 'UNESITE VAS API OVDE';
+  const apiKey = 'maki upisi ovde';
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
