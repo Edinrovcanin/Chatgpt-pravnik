@@ -6,7 +6,7 @@ const App = () => {
   const [selectedOption, setSelectedOption] = useState('Pravna pomoć 1');
   const [selectedCountry, setSelectedCountry] = useState('Bosna i Hercegovina');
   const [chatGptResponse, setChatGptResponse] = useState('');
-  const apiKey = 'Upisi ove samo svoj api ';
+  const apiKey = 'upisite svoj api key';
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
