@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Logoimg from './Logoimg.png';
+import './App.css'; // Uvezite vaš originalni CSS
 
 const App = () => {
   const [userInput, setUserInput] = useState('');
   const [selectedOption, setSelectedOption] = useState('Pravna pomoć 1');
   const [selectedCountry, setSelectedCountry] = useState('Bosna i Hercegovina');
   const [chatGptResponse, setChatGptResponse] = useState('');
-  const apiKey = 'Unesite vas api';
+  const apiKey = 'UNESITE VAS APIKEY';
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
@@ -47,9 +49,9 @@ const App = () => {
   };
 
   return (
-    <div style={{ background: 'white', minHeight: '100vh', display: 'flex' }}>
+    <div className="app-container">
       {/* Left side */}
-      <div style={{ flex: 3, padding: '25px', boxSizing: 'border-box', background: 'white', border: '2px solid black', margin: '25px', display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
+      <div className="app-left">
         <div style={{ marginBottom: '20px' }}>
           <h2 style={{ color: 'black', fontSize: '24px', marginBottom: '20px' }}>Odaberite pravnu oblast:</h2>
           <select style={{ marginBottom: '20px', fontSize: '18px', height: '50px' }} value={selectedOption} onChange={handleOptionChange}>
@@ -80,9 +82,9 @@ const App = () => {
       </div>
 
       {/* Right side */}
-      <div style={{ flex: 2, padding: '25px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', background: 'white', border: '2px solid black', margin: '25px' }}>
+      <div className="app-right">
         <div style={{ marginBottom: '10px', alignSelf: 'flex-start', display: 'flex', alignItems: 'center' }}>
-          <img src="Logoimg.png" alt="Odgovor ikona" style={{ width: '30px', height: '30px', marginRight: '10px' }} />
+          <img src={Logoimg} alt="Odgovor ikona" style={{ width: '30px', height: '30px', marginRight: '10px' }} />
           <h3 style={{ color: 'black', marginBottom: '5px' }}>Odgovor naših pravnika:</h3>
         </div>
         {chatGptResponse && (
