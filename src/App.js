@@ -6,7 +6,7 @@ const App = () => {
   const [selectedOption, setSelectedOption] = useState('Pravna pomoć 1');
   const [selectedCountry, setSelectedCountry] = useState('Bosna i Hercegovina');
   const [chatGptResponse, setChatGptResponse] = useState('');
-  const apiKey = 'upisite svoj api key';
+  const apiKey = 'Unesite vas api';
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
@@ -51,7 +51,7 @@ const App = () => {
       {/* Left side */}
       <div style={{ flex: 3, padding: '25px', boxSizing: 'border-box', background: 'white', border: '2px solid black', margin: '25px', display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
         <div style={{ marginBottom: '20px' }}>
-          <h2 style={{ color: 'black', fontSize: '24px', marginBottom: '20px' }}>Odaberite pravnu pomoć</h2>
+          <h2 style={{ color: 'black', fontSize: '24px', marginBottom: '20px' }}>Odaberite pravnu oblast:</h2>
           <select style={{ marginBottom: '20px', fontSize: '18px', height: '50px' }} value={selectedOption} onChange={handleOptionChange}>
             <option value="Pravna pomoć 1">Građanska prava</option>
             <option value="Pravna pomoć 2">Ljudska prava</option>
@@ -60,7 +60,7 @@ const App = () => {
             <option value="Pravna pomoć 5">Ekonomska prava</option>
           </select>
 
-          <h2 style={{ color: 'black', fontSize: '24px', marginBottom: '20px' }}>Odaberite državu</h2>
+          <h2 style={{ color: 'black', fontSize: '24px', marginBottom: '20px' }}>Odaberite državno zakonodavstvo:</h2>
           <select style={{ marginBottom: '20px', fontSize: '18px', height: '50px' }} value={selectedCountry} onChange={handleCountryChange}>
             <option value="Bosna i Hercegovina">Bosna i Hercegovina</option>
             <option value="Srbija">Srbija</option>
@@ -68,7 +68,7 @@ const App = () => {
             <option value="Crna Gora">Crna Gora</option>
           </select>
         </div>
-
+        <h2 style={{ color: 'black', fontSize: '24px', marginBottom: '20px' }}>Postavite pitanje:</h2>
         <div style={{ marginBottom: '20px', alignSelf: 'stretch' }}>
           <textarea
             value={userInput}
