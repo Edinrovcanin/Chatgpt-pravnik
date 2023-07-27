@@ -82,7 +82,7 @@ const App = () => {
       {/* Right side */}
       <div style={{ flex: 2, padding: '25px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', background: 'white', border: '2px solid black', margin: '25px' }}>
         <div style={{ marginBottom: '10px', alignSelf: 'flex-start', display: 'flex', alignItems: 'center' }}>
-          <img src="your-icon-url.png" alt="Odgovor ikona" style={{ width: '30px', height: '30px', marginRight: '10px' }} />
+          <img src="Logoimg.png" alt="Odgovor ikona" style={{ width: '30px', height: '30px', marginRight: '10px' }} />
           <h3 style={{ color: 'black', marginBottom: '5px' }}>Odgovor naših pravnika:</h3>
         </div>
         {chatGptResponse && (
